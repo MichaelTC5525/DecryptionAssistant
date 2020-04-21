@@ -77,17 +77,59 @@ CMakeFiles\DecryptionAssistant.dir\main.cpp.s: cmake_force
  /nologo /TP $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) /FoNUL /FAs /FaCMakeFiles\DecryptionAssistant.dir\main.cpp.s /c C:\Users\micha\CLionProjects\DecryptionAssistant\main.cpp
 <<
 
+CMakeFiles\DecryptionAssistant.dir\EngramCandy.cpp.obj: CMakeFiles\DecryptionAssistant.dir\flags.make
+CMakeFiles\DecryptionAssistant.dir\EngramCandy.cpp.obj: ..\EngramCandy.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=C:\Users\micha\CLionProjects\DecryptionAssistant\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object CMakeFiles/DecryptionAssistant.dir/EngramCandy.cpp.obj"
+	C:\PROGRA~2\MICROS~1\2017\COMMUN~1\VC\Tools\MSVC\1414~1.264\bin\Hostx86\x86\cl.exe @<<
+ /nologo /TP $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) /FoCMakeFiles\DecryptionAssistant.dir\EngramCandy.cpp.obj /FdCMakeFiles\DecryptionAssistant.dir\ /FS -c C:\Users\micha\CLionProjects\DecryptionAssistant\EngramCandy.cpp
+<<
+
+CMakeFiles\DecryptionAssistant.dir\EngramCandy.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/DecryptionAssistant.dir/EngramCandy.cpp.i"
+	C:\PROGRA~2\MICROS~1\2017\COMMUN~1\VC\Tools\MSVC\1414~1.264\bin\Hostx86\x86\cl.exe > CMakeFiles\DecryptionAssistant.dir\EngramCandy.cpp.i @<<
+ /nologo /TP $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E C:\Users\micha\CLionProjects\DecryptionAssistant\EngramCandy.cpp
+<<
+
+CMakeFiles\DecryptionAssistant.dir\EngramCandy.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/DecryptionAssistant.dir/EngramCandy.cpp.s"
+	C:\PROGRA~2\MICROS~1\2017\COMMUN~1\VC\Tools\MSVC\1414~1.264\bin\Hostx86\x86\cl.exe @<<
+ /nologo /TP $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) /FoNUL /FAs /FaCMakeFiles\DecryptionAssistant.dir\EngramCandy.cpp.s /c C:\Users\micha\CLionProjects\DecryptionAssistant\EngramCandy.cpp
+<<
+
+CMakeFiles\DecryptionAssistant.dir\GameBoard.cpp.obj: CMakeFiles\DecryptionAssistant.dir\flags.make
+CMakeFiles\DecryptionAssistant.dir\GameBoard.cpp.obj: ..\GameBoard.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=C:\Users\micha\CLionProjects\DecryptionAssistant\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object CMakeFiles/DecryptionAssistant.dir/GameBoard.cpp.obj"
+	C:\PROGRA~2\MICROS~1\2017\COMMUN~1\VC\Tools\MSVC\1414~1.264\bin\Hostx86\x86\cl.exe @<<
+ /nologo /TP $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) /FoCMakeFiles\DecryptionAssistant.dir\GameBoard.cpp.obj /FdCMakeFiles\DecryptionAssistant.dir\ /FS -c C:\Users\micha\CLionProjects\DecryptionAssistant\GameBoard.cpp
+<<
+
+CMakeFiles\DecryptionAssistant.dir\GameBoard.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/DecryptionAssistant.dir/GameBoard.cpp.i"
+	C:\PROGRA~2\MICROS~1\2017\COMMUN~1\VC\Tools\MSVC\1414~1.264\bin\Hostx86\x86\cl.exe > CMakeFiles\DecryptionAssistant.dir\GameBoard.cpp.i @<<
+ /nologo /TP $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E C:\Users\micha\CLionProjects\DecryptionAssistant\GameBoard.cpp
+<<
+
+CMakeFiles\DecryptionAssistant.dir\GameBoard.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/DecryptionAssistant.dir/GameBoard.cpp.s"
+	C:\PROGRA~2\MICROS~1\2017\COMMUN~1\VC\Tools\MSVC\1414~1.264\bin\Hostx86\x86\cl.exe @<<
+ /nologo /TP $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) /FoNUL /FAs /FaCMakeFiles\DecryptionAssistant.dir\GameBoard.cpp.s /c C:\Users\micha\CLionProjects\DecryptionAssistant\GameBoard.cpp
+<<
+
 # Object files for target DecryptionAssistant
 DecryptionAssistant_OBJECTS = \
-"CMakeFiles\DecryptionAssistant.dir\main.cpp.obj"
+"CMakeFiles\DecryptionAssistant.dir\main.cpp.obj" \
+"CMakeFiles\DecryptionAssistant.dir\EngramCandy.cpp.obj" \
+"CMakeFiles\DecryptionAssistant.dir\GameBoard.cpp.obj"
 
 # External object files for target DecryptionAssistant
 DecryptionAssistant_EXTERNAL_OBJECTS =
 
 DecryptionAssistant.exe: CMakeFiles\DecryptionAssistant.dir\main.cpp.obj
+DecryptionAssistant.exe: CMakeFiles\DecryptionAssistant.dir\EngramCandy.cpp.obj
+DecryptionAssistant.exe: CMakeFiles\DecryptionAssistant.dir\GameBoard.cpp.obj
 DecryptionAssistant.exe: CMakeFiles\DecryptionAssistant.dir\build.make
 DecryptionAssistant.exe: CMakeFiles\DecryptionAssistant.dir\objects1.rsp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=C:\Users\micha\CLionProjects\DecryptionAssistant\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Linking CXX executable DecryptionAssistant.exe"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=C:\Users\micha\CLionProjects\DecryptionAssistant\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Linking CXX executable DecryptionAssistant.exe"
 	"C:\Program Files\JetBrains\CLion 2019.3.2\bin\cmake\win\bin\cmake.exe" -E vs_link_exe --intdir=CMakeFiles\DecryptionAssistant.dir --rc=C:\PROGRA~2\WI3CF2~1\10\bin\100171~1.0\x86\rc.exe --mt=C:\PROGRA~2\WI3CF2~1\10\bin\100171~1.0\x86\mt.exe --manifests  -- C:\PROGRA~2\MICROS~1\2017\COMMUN~1\VC\Tools\MSVC\1414~1.264\bin\Hostx86\x86\link.exe /nologo @CMakeFiles\DecryptionAssistant.dir\objects1.rsp @<<
  /out:DecryptionAssistant.exe /implib:DecryptionAssistant.lib /pdb:C:\Users\micha\CLionProjects\DecryptionAssistant\cmake-build-debug\DecryptionAssistant.pdb /version:0.0  /machine:X86 /debug /INCREMENTAL /subsystem:console kernel32.lib user32.lib gdi32.lib winspool.lib shell32.lib ole32.lib oleaut32.lib uuid.lib comdlg32.lib advapi32.lib 
 <<

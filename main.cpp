@@ -7,5 +7,7 @@ int main() {
     int d = 78;
     int * asd = &d;
     std::cout << "The number is: " << *asd << std::endl;
+
+    //Some startup procedures, initialize GUI (for much later)
     return 0;
 }

@@ -124,6 +124,60 @@ DecryptionAssistant\fast:
 	$(MAKE) -f CMakeFiles\DecryptionAssistant.dir\build.make /nologo -$(MAKEFLAGS) CMakeFiles\DecryptionAssistant.dir\build
 .PHONY : DecryptionAssistant\fast
 
+EngramCandy.obj: EngramCandy.cpp.obj
+
+.PHONY : EngramCandy.obj
+
+# target to build an object file
+EngramCandy.cpp.obj:
+	$(MAKE) -f CMakeFiles\DecryptionAssistant.dir\build.make /nologo -$(MAKEFLAGS) CMakeFiles\DecryptionAssistant.dir\EngramCandy.cpp.obj
+.PHONY : EngramCandy.cpp.obj
+
+EngramCandy.i: EngramCandy.cpp.i
+
+.PHONY : EngramCandy.i
+
+# target to preprocess a source file
+EngramCandy.cpp.i:
+	$(MAKE) -f CMakeFiles\DecryptionAssistant.dir\build.make /nologo -$(MAKEFLAGS) CMakeFiles\DecryptionAssistant.dir\EngramCandy.cpp.i
+.PHONY : EngramCandy.cpp.i
+
+EngramCandy.s: EngramCandy.cpp.s
+
+.PHONY : EngramCandy.s
+
+# target to generate assembly for a file
+EngramCandy.cpp.s:
+	$(MAKE) -f CMakeFiles\DecryptionAssistant.dir\build.make /nologo -$(MAKEFLAGS) CMakeFiles\DecryptionAssistant.dir\EngramCandy.cpp.s
+.PHONY : EngramCandy.cpp.s
+
+GameBoard.obj: GameBoard.cpp.obj
+
+.PHONY : GameBoard.obj
+
+# target to build an object file
+GameBoard.cpp.obj:
+	$(MAKE) -f CMakeFiles\DecryptionAssistant.dir\build.make /nologo -$(MAKEFLAGS) CMakeFiles\DecryptionAssistant.dir\GameBoard.cpp.obj
+.PHONY : GameBoard.cpp.obj
+
+GameBoard.i: GameBoard.cpp.i
+
+.PHONY : GameBoard.i
+
+# target to preprocess a source file
+GameBoard.cpp.i:
+	$(MAKE) -f CMakeFiles\DecryptionAssistant.dir\build.make /nologo -$(MAKEFLAGS) CMakeFiles\DecryptionAssistant.dir\GameBoard.cpp.i
+.PHONY : GameBoard.cpp.i
+
+GameBoard.s: GameBoard.cpp.s
+
+.PHONY : GameBoard.s
+
+# target to generate assembly for a file
+GameBoard.cpp.s:
+	$(MAKE) -f CMakeFiles\DecryptionAssistant.dir\build.make /nologo -$(MAKEFLAGS) CMakeFiles\DecryptionAssistant.dir\GameBoard.cpp.s
+.PHONY : GameBoard.cpp.s
+
 main.obj: main.cpp.obj
 
 .PHONY : main.obj
@@ -160,6 +214,12 @@ help:
 	@echo ... DecryptionAssistant
 	@echo ... edit_cache
 	@echo ... rebuild_cache
+	@echo ... EngramCandy.obj
+	@echo ... EngramCandy.i
+	@echo ... EngramCandy.s
+	@echo ... GameBoard.obj
+	@echo ... GameBoard.i
+	@echo ... GameBoard.s
 	@echo ... main.obj
 	@echo ... main.i
 	@echo ... main.s
