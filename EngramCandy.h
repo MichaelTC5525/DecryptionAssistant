@@ -12,6 +12,8 @@ public:
     int getRarity();
     int getXPos();
     int getYPos();
+    void setXPos(int x);
+    void setYPos(int y);
 
 
 
@@ -19,6 +21,9 @@ private:
 
     //Represents common, uncommon, rare, legendary, exotic status (numbers 1-5 respectively)
     int rarity;
+
+    //Represents number of points this particular EngramCandy yields when matched
+    int pointValue;
 
     //Represents x-position in game board array
     int xPos;

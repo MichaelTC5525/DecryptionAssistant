@@ -3,6 +3,7 @@
 //
 
 #include "EngramCandy.h"
+#include <stdlib.h>
 
 //Constructor for generic engram candy
 EngramCandy::EngramCandy() {
@@ -26,6 +27,14 @@ int EngramCandy::getXPos() {
 //Returns y-position within game board array
 int EngramCandy::getYPos() {
     return yPos;
+}
+
+void EngramCandy::setXPos(int x) {
+    xPos = x;
+}
+
+void EngramCandy::setYPos(int y) {
+    yPos = y;
 }
 
 
