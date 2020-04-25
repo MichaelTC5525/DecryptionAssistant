@@ -3,20 +3,29 @@
 //
 
 #include "EngramCandy.h"
-#include <stdlib.h>
+#include <cstdlib>
+#include <ctime>
 
 //Constructor for generic engram candy
 EngramCandy::EngramCandy() {
-    //initialize rarity value; setup x and y coordinates?
+    //Seed a random number generator
+    srand(time(nullptr));
+    //Init rarity and points based on randomized rarity
+    rarity = rand() % 5 + 1;
+    pointValue = rarity * 100;
 }
 
 EngramCandy::~EngramCandy() {
-    //delete this
+    //delete this and other cleanup if needed
 }
 
 //Returns rarity of this object
 int EngramCandy::getRarity() {
     return rarity;
+}
+
+int EngramCandy::getPointValue() {
+    return pointValue;
 }
 
 //Returns x-position within game board array

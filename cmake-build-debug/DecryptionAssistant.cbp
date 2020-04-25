@@ -96,6 +96,12 @@
 		<Unit filename="C:/Users/micha/CLionProjects/DecryptionAssistant/GameBoard.h">
 			<Option target="DecryptionAssistant"/>
 		</Unit>
+		<Unit filename="C:/Users/micha/CLionProjects/DecryptionAssistant/ScorePanel.cpp">
+			<Option target="DecryptionAssistant"/>
+		</Unit>
+		<Unit filename="C:/Users/micha/CLionProjects/DecryptionAssistant/ScorePanel.h">
+			<Option target="DecryptionAssistant"/>
+		</Unit>
 		<Unit filename="C:/Users/micha/CLionProjects/DecryptionAssistant/main.cpp">
 			<Option target="DecryptionAssistant"/>
 		</Unit>

@@ -9,9 +9,12 @@ class EngramCandy {
 public:
     EngramCandy();
     ~EngramCandy();
+
     int getRarity();
     int getXPos();
     int getYPos();
+    int getPointValue();
+
     void setXPos(int x);
     void setYPos(int y);
 

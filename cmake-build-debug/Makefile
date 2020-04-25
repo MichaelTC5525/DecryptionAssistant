@@ -178,6 +178,33 @@ GameBoard.cpp.s:
 	$(MAKE) -f CMakeFiles\DecryptionAssistant.dir\build.make /nologo -$(MAKEFLAGS) CMakeFiles\DecryptionAssistant.dir\GameBoard.cpp.s
 .PHONY : GameBoard.cpp.s
 
+ScorePanel.obj: ScorePanel.cpp.obj
+
+.PHONY : ScorePanel.obj
+
+# target to build an object file
+ScorePanel.cpp.obj:
+	$(MAKE) -f CMakeFiles\DecryptionAssistant.dir\build.make /nologo -$(MAKEFLAGS) CMakeFiles\DecryptionAssistant.dir\ScorePanel.cpp.obj
+.PHONY : ScorePanel.cpp.obj
+
+ScorePanel.i: ScorePanel.cpp.i
+
+.PHONY : ScorePanel.i
+
+# target to preprocess a source file
+ScorePanel.cpp.i:
+	$(MAKE) -f CMakeFiles\DecryptionAssistant.dir\build.make /nologo -$(MAKEFLAGS) CMakeFiles\DecryptionAssistant.dir\ScorePanel.cpp.i
+.PHONY : ScorePanel.cpp.i
+
+ScorePanel.s: ScorePanel.cpp.s
+
+.PHONY : ScorePanel.s
+
+# target to generate assembly for a file
+ScorePanel.cpp.s:
+	$(MAKE) -f CMakeFiles\DecryptionAssistant.dir\build.make /nologo -$(MAKEFLAGS) CMakeFiles\DecryptionAssistant.dir\ScorePanel.cpp.s
+.PHONY : ScorePanel.cpp.s
+
 main.obj: main.cpp.obj
 
 .PHONY : main.obj
@@ -220,6 +247,9 @@ help:
 	@echo ... GameBoard.obj
 	@echo ... GameBoard.i
 	@echo ... GameBoard.s
+	@echo ... ScorePanel.obj
+	@echo ... ScorePanel.i
+	@echo ... ScorePanel.s
 	@echo ... main.obj
 	@echo ... main.i
 	@echo ... main.s

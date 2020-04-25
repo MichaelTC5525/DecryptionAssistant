@@ -14,13 +14,15 @@ public:
     GameBoard();
     ~GameBoard();
     void checkForMoves();
+    void removeCandy(int x, int y);
+    int getBoardDimension();
 
 private:
     //Helper function for public checkForMoves()
-    bool searchBoard();
+    bool searchBoardForMoves();
 
     //Helper function for public checkForMoves()
-    void shuffleBoard();
+    void resetBoard();
 
     //Representation of the gameBoard as a 2-Dimensional vector array
     std::vector<std::vector<EngramCandy *>> gameBoard;
