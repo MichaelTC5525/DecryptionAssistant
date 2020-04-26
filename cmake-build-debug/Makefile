@@ -178,6 +178,33 @@ GameBoard.cpp.s:
 	$(MAKE) -f CMakeFiles\DecryptionAssistant.dir\build.make /nologo -$(MAKEFLAGS) CMakeFiles\DecryptionAssistant.dir\GameBoard.cpp.s
 .PHONY : GameBoard.cpp.s
 
+MatchChecker.obj: MatchChecker.cpp.obj
+
+.PHONY : MatchChecker.obj
+
+# target to build an object file
+MatchChecker.cpp.obj:
+	$(MAKE) -f CMakeFiles\DecryptionAssistant.dir\build.make /nologo -$(MAKEFLAGS) CMakeFiles\DecryptionAssistant.dir\MatchChecker.cpp.obj
+.PHONY : MatchChecker.cpp.obj
+
+MatchChecker.i: MatchChecker.cpp.i
+
+.PHONY : MatchChecker.i
+
+# target to preprocess a source file
+MatchChecker.cpp.i:
+	$(MAKE) -f CMakeFiles\DecryptionAssistant.dir\build.make /nologo -$(MAKEFLAGS) CMakeFiles\DecryptionAssistant.dir\MatchChecker.cpp.i
+.PHONY : MatchChecker.cpp.i
+
+MatchChecker.s: MatchChecker.cpp.s
+
+.PHONY : MatchChecker.s
+
+# target to generate assembly for a file
+MatchChecker.cpp.s:
+	$(MAKE) -f CMakeFiles\DecryptionAssistant.dir\build.make /nologo -$(MAKEFLAGS) CMakeFiles\DecryptionAssistant.dir\MatchChecker.cpp.s
+.PHONY : MatchChecker.cpp.s
+
 ScorePanel.obj: ScorePanel.cpp.obj
 
 .PHONY : ScorePanel.obj
@@ -247,6 +274,9 @@ help:
 	@echo ... GameBoard.obj
 	@echo ... GameBoard.i
 	@echo ... GameBoard.s
+	@echo ... MatchChecker.obj
+	@echo ... MatchChecker.i
+	@echo ... MatchChecker.s
 	@echo ... ScorePanel.obj
 	@echo ... ScorePanel.i
 	@echo ... ScorePanel.s

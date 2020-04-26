@@ -3,16 +3,21 @@
 //
 
 #include "GameBoard.h"
+#include "MatchChecker.h"
 
-GameBoard::GameBoard() {
+GameBoard::GameBoard(int dimension) {
     //create the 2-Dimensional array; make them pointers to their objects for ease of clearing later
     gameBoard = std::vector<std::vector<EngramCandy *>>();
-    boardDimension = 10;
+    //Set dimensions of the board (square board)
+    boardDimension = dimension;
     for (int i = 0; i < boardDimension; i++) {
         for (int j = 0; j < boardDimension; j++) {
+            //Create new EngramCandy pointers for each slot
             EngramCandy * engramCandy = new EngramCandy();
             engramCandy->setXPos(i);
             engramCandy->setYPos(j);
+
+            //Set the entry to the new created EngramCandy
             gameBoard[i][j] = engramCandy;
         }
     }
@@ -24,13 +29,13 @@ GameBoard::~GameBoard() {
     //loop through each of the cells, and free up the space of each EngramCandy?
     for (int i = 0; i < gameBoard.size(); i++) {
         for (int j = 0; j < gameBoard[i].size(); j++) {
-            delete gameBoard[i][j];
+            removeCandy(i, j);
         }
     }
 }
 
 //Perform a search to find if a match is possible with current board status?
-//Called after a move ends in a match and board updates
+//Possible usages: called after a move ends in a match and board updates; called after a board reset
 void GameBoard::checkForMoves() {
     //searching helper function
     bool moveAvailable = searchBoardForMoves();
@@ -38,20 +43,21 @@ void GameBoard::checkForMoves() {
     if (!moveAvailable) {
         //Reset the whole board if no matching moves are found
         resetBoard();
+
+        //Check if the new board has available moves
+        checkForMoves();
     }
 }
 
-void GameBoard::removeCandy(int x, int y) {
-    delete gameBoard[x][y];
-}
+
 
 bool GameBoard::searchBoardForMoves() {
-    //TODO: Complete a search through the array
     //Not a breadth-first search
-    //IDEA: Go through each of the elements in the 2-D array, and simulate if a match will occur if
+    //IDEA: Go through each of the elements in the 2-D array, and simulate if a match would occur if
     //      that element was moved left, up, right, or down (in that order)
 
     //A pointer to a boolean to determine if a match has been found yet; for-loops exit early if triggered early
+    //Pass in boolean pointer so that this boolean can be changed by reference
     bool matchFound = false;
     bool * matchFoundPointer = &matchFound;
 
@@ -64,60 +70,137 @@ bool GameBoard::searchBoardForMoves() {
 
             switch(i) {
                 case 0:
-                    //TODO: Switch-statement in first column of 2-D array
                     switch(j) {
                         case 0:
-                            //simulateRight(rarityToTest);
-                            //simulateDown(rarityToTest);
+                            //Right, Down
+                            MatchChecker::simulate(matchFoundPointer, this, rarityToTest, i, j, 3);
+                            if (matchFound) {
+                                return true;
+                            }
+                            MatchChecker::simulate(matchFoundPointer, this, rarityToTest, i, j, 4);
+                            if (matchFound) {
+                                return true;
+                            }
                             break;
                         case 9:
-                            //simulateUp(rarityToTest);
-                            //simulateRight(rarityToTest);
+                            //Up, Right
+                            MatchChecker::simulate(matchFoundPointer, this, rarityToTest, i, j, 2);
+                            if (matchFound) {
+                                return true;
+                            }
+                            MatchChecker::simulate(matchFoundPointer, this, rarityToTest, i, j, 3);
+                            if (matchFound) {
+                                return true;
+                            }
                             break;
                         default:
-                            //simulateUp(rarityToTest);
-                            //simulateRight(rarityToTest);
-                            //simulateDown(rarityToTest);
+                            //Up, Right, Down
+                            MatchChecker::simulate(matchFoundPointer, this, rarityToTest, i, j, 2);
+                            if (matchFound) {
+                                return true;
+                            }
+                            MatchChecker::simulate(matchFoundPointer, this, rarityToTest, i, j, 3);
+                            if (matchFound) {
+                                return true;
+                            }
+                            MatchChecker::simulate(matchFoundPointer, this, rarityToTest, i, j, 4);
+                            if (matchFound) {
+                                return true;
+                            }
                             break;
                     }
-
                     break;
                 case 9:
-                    //TODO: Switch-statement in last column of 2-D array
                     switch(j) {
                         case 0:
-                            //simulateLeft(rarityToTest);
-                            //simulateDown(rarityToTest);
+                            //Left, Down
+                            MatchChecker::simulate(matchFoundPointer, this, rarityToTest, i, j, 1);
+                            if (matchFound) {
+                                return true;
+                            }
+                            MatchChecker::simulate(matchFoundPointer, this, rarityToTest, i, j, 4);
+                            if (matchFound) {
+                                return true;
+                            }
                             break;
                         case 9:
-                            //simulateLeft(rarityToTest);
-                            //simulateUp(rarityToTest);
+                            //Left, Up
+                            MatchChecker::simulate(matchFoundPointer, this, rarityToTest, i, j, 1);
+                            if (matchFound) {
+                                return true;
+                            }
+                            MatchChecker::simulate(matchFoundPointer, this, rarityToTest, i, j, 2);
+                            if (matchFound) {
+                                return true;
+                            }
                             break;
                         default:
-                            //simulateLeft(rarityToTest);
-                            //simulateUp(rarityToTest);
-                            //simulateDown(rarityToTest);
+                            //Left, Up, Down
+                            MatchChecker::simulate(matchFoundPointer, this, rarityToTest, i, j, 1);
+                            if (matchFound) {
+                                return true;
+                            }
+                            MatchChecker::simulate(matchFoundPointer, this, rarityToTest, i, j, 2);
+                            if (matchFound) {
+                                return true;
+                            }
+                            MatchChecker::simulate(matchFoundPointer, this, rarityToTest, i, j, 4);
+                            if (matchFound) {
+                                return true;
+                            }
                             break;
                     }
                     break;
                 default:
-                    //TODO: Switch-statement in arbitrary column of 2-D array
                     switch(j) {
                         case 0:
-                            //simulateLeft(rarityToTest);
-                            //simulateRight(rarityToTest);
-                            //simulateDown(rarityToTest);
+                            //Left, Right, Down
+                            MatchChecker::simulate(matchFoundPointer, this, rarityToTest, i, j, 1);
+                            if (matchFound) {
+                                return true;
+                            }
+                            MatchChecker::simulate(matchFoundPointer, this, rarityToTest, i, j, 3);
+                            if (matchFound) {
+                                return true;
+                            }
+                            MatchChecker::simulate(matchFoundPointer, this, rarityToTest, i, j, 4);
+                            if (matchFound) {
+                                return true;
+                            }
                             break;
                         case 9:
-                            //simulateLeft(rarityToTest);
-                            //simulateUp(rarityToTest);
-                            //simulateRight(rarityToTest);
+                            //Left, Up, Right
+                            MatchChecker::simulate(matchFoundPointer, this, rarityToTest, i, j, 1);
+                            if (matchFound) {
+                                return true;
+                            }
+                            MatchChecker::simulate(matchFoundPointer, this, rarityToTest, i, j, 2);
+                            if (matchFound) {
+                                return true;
+                            }
+                            MatchChecker::simulate(matchFoundPointer, this, rarityToTest, i, j, 3);
+                            if (matchFound) {
+                                return true;
+                            }
                             break;
                         default:
-                            //simulateLeft(rarityToTest);
-                            //simulateUp(rarityToTest);
-                            //simulateRight(rarityToTest);
-                            //simulateDown(rarityToTest);
+                            //Left, Up, Right, Down
+                            MatchChecker::simulate(matchFoundPointer, this, rarityToTest, i, j, 1);
+                            if (matchFound) {
+                                return true;
+                            }
+                            MatchChecker::simulate(matchFoundPointer, this, rarityToTest, i, j, 2);
+                            if (matchFound) {
+                                return true;
+                            }
+                            MatchChecker::simulate(matchFoundPointer, this, rarityToTest, i, j, 3);
+                            if (matchFound) {
+                                return true;
+                            }
+                            MatchChecker::simulate(matchFoundPointer, this, rarityToTest, i, j, 4);
+                            if (matchFound) {
+                                return true;
+                            }
                             break;
                     }
                     break;
@@ -125,26 +208,21 @@ bool GameBoard::searchBoardForMoves() {
 
         }
     }
-
     return false;
-}
-
-int GameBoard::getBoardDimension() {
-    return boardDimension;
 }
 
 void GameBoard::resetBoard() {
     //Set up a new gameBoard; maybe delete all current elements, and rerandomize to repopulate?
     //Kind of a mixture of both the destructor and constructor of GameBoard objects
 
-    //From destructor; get rid of everything currently in it
+    //Copied from destructor; get rid of everything currently in it
     for (int i = 0; i < gameBoard.size(); i++) {
         for (int j = 0; j < gameBoard[i].size(); j++) {
-            delete gameBoard[i][j];
+           removeCandy(i, j);
         }
     }
 
-    //From constructor
+    //Copied from constructor
     //Initialize brand new board, with new EngramCandy instantiations
     for (int i = 0; i < boardDimension; i++) {
         for (int j = 0; j < boardDimension; j++) {
@@ -154,4 +232,17 @@ void GameBoard::resetBoard() {
             gameBoard[i][j] = engramCandy;
         }
     }
+}
+
+//Deletes an EngramCandy at specified coordinates in the GameBoard
+void GameBoard::removeCandy(int x, int y) {
+    delete gameBoard[x][y];
+}
+
+int GameBoard::getBoardDimension() {
+    return boardDimension;
+}
+
+std::vector<std::vector<EngramCandy *>> GameBoard::getGameBoard() {
+    return gameBoard;
 }

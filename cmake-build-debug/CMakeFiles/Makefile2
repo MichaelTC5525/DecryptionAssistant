@@ -75,12 +75,12 @@ preinstall:
 CMakeFiles\DecryptionAssistant.dir\all:
 	$(MAKE) -f CMakeFiles\DecryptionAssistant.dir\build.make /nologo -$(MAKEFLAGS) CMakeFiles\DecryptionAssistant.dir\depend
 	$(MAKE) -f CMakeFiles\DecryptionAssistant.dir\build.make /nologo -$(MAKEFLAGS) CMakeFiles\DecryptionAssistant.dir\build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=C:\Users\micha\CLionProjects\DecryptionAssistant\cmake-build-debug\CMakeFiles --progress-num=1,2,3,4,5 "Built target DecryptionAssistant"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=C:\Users\micha\CLionProjects\DecryptionAssistant\cmake-build-debug\CMakeFiles --progress-num=1,2,3,4,5,6 "Built target DecryptionAssistant"
 .PHONY : CMakeFiles\DecryptionAssistant.dir\all
 
 # Build rule for subdir invocation for target.
 CMakeFiles\DecryptionAssistant.dir\rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start C:\Users\micha\CLionProjects\DecryptionAssistant\cmake-build-debug\CMakeFiles 5
+	$(CMAKE_COMMAND) -E cmake_progress_start C:\Users\micha\CLionProjects\DecryptionAssistant\cmake-build-debug\CMakeFiles 6
 	$(MAKE) -f CMakeFiles\Makefile2 /nologo -$(MAKEFLAGS) CMakeFiles\DecryptionAssistant.dir\all
 	$(CMAKE_COMMAND) -E cmake_progress_start C:\Users\micha\CLionProjects\DecryptionAssistant\cmake-build-debug\CMakeFiles 0
 .PHONY : CMakeFiles\DecryptionAssistant.dir\rule

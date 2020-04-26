@@ -5,14 +5,13 @@
 #include "GameBoard.h"
 #include "ScorePanel.h"
 
-ScorePanel::ScorePanel() {
+ScorePanel::ScorePanel(int pointThreshold, int initMovesLeft) {
     currPoints = 0;
-
-    //TODO: Temporary
-    pointPassThreshold = 10000;
-
+    pointPassThreshold = pointThreshold;
+    movesLeft = initMovesLeft;
     isAboveThreshold = false;
 }
+
 
 ScorePanel::~ScorePanel() {
 
@@ -24,6 +23,10 @@ int ScorePanel::getCurrPoints() {
 
 int ScorePanel::getPointPassThreshold() {
     return pointPassThreshold;
+}
+
+int ScorePanel::getMovesLeft() {
+    return movesLeft;
 }
 
 void ScorePanel::checkAboveThreshold() {

@@ -11,11 +11,12 @@
 class GameBoard {
 
 public:
-    GameBoard();
+    GameBoard(int dimension);
     ~GameBoard();
     void checkForMoves();
     void removeCandy(int x, int y);
     int getBoardDimension();
+    std::vector<std::vector<EngramCandy *>> getGameBoard();
 
 private:
     //Helper function for public checkForMoves()

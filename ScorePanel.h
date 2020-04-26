@@ -8,16 +8,18 @@
 
 class ScorePanel {
 public:
-    ScorePanel();
+    ScorePanel(int pointThreshold, int initMovesLeft);
     ~ScorePanel();
     int getPointPassThreshold();
     int getCurrPoints();
+    int getMovesLeft();
     void checkAboveThreshold();
 
 private:
     int pointPassThreshold;
     int currPoints;
     bool isAboveThreshold;
+    int movesLeft;
 
 
 };
