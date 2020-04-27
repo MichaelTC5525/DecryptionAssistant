@@ -7,6 +7,17 @@ CMakeFiles\DecryptionAssistant.dir\EngramCandy.cpp.obj: ..\EngramCandy.h
 CMakeFiles\DecryptionAssistant.dir\GameBoard.cpp.obj: ..\EngramCandy.h
 CMakeFiles\DecryptionAssistant.dir\GameBoard.cpp.obj: ..\GameBoard.cpp
 CMakeFiles\DecryptionAssistant.dir\GameBoard.cpp.obj: ..\GameBoard.h
+CMakeFiles\DecryptionAssistant.dir\GameBoard.cpp.obj: ..\MatchChecker.h
+
+CMakeFiles\DecryptionAssistant.dir\MatchChecker.cpp.obj: ..\EngramCandy.h
+CMakeFiles\DecryptionAssistant.dir\MatchChecker.cpp.obj: ..\GameBoard.h
+CMakeFiles\DecryptionAssistant.dir\MatchChecker.cpp.obj: ..\MatchChecker.cpp
+CMakeFiles\DecryptionAssistant.dir\MatchChecker.cpp.obj: ..\MatchChecker.h
+
+CMakeFiles\DecryptionAssistant.dir\ScorePanel.cpp.obj: ..\EngramCandy.h
+CMakeFiles\DecryptionAssistant.dir\ScorePanel.cpp.obj: ..\GameBoard.h
+CMakeFiles\DecryptionAssistant.dir\ScorePanel.cpp.obj: ..\ScorePanel.cpp
+CMakeFiles\DecryptionAssistant.dir\ScorePanel.cpp.obj: ..\ScorePanel.h
 
 CMakeFiles\DecryptionAssistant.dir\main.cpp.obj: ..\main.cpp
 

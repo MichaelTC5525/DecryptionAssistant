@@ -6,23 +6,23 @@
 #include "MatchChecker.h"
 
 GameBoard::GameBoard(int dimension) {
-    //create the 2-Dimensional array; make them pointers to their objects for ease of clearing later
-    gameBoard = std::vector<std::vector<EngramCandy *>>();
     //Set dimensions of the board (square board)
     boardDimension = dimension;
-    for (int i = 0; i < boardDimension; i++) {
-        for (int j = 0; j < boardDimension; j++) {
-            //Create new EngramCandy pointers for each slot
-            EngramCandy * engramCandy = new EngramCandy();
-            engramCandy->setXPos(i);
-            engramCandy->setYPos(j);
 
-            //Set the entry to the new created EngramCandy
-            gameBoard[i][j] = engramCandy;
-        }
+        //create the 2-Dimensional array; make them pointers to their objects for ease of clearing later
+        gameBoard = std::vector<std::vector<EngramCandy *>>();
+        gameBoard.reserve(boardDimension);
+
+        for (int i = 0; i < boardDimension; i++) {
+            std::vector<EngramCandy *> columnI;
+            columnI.reserve(boardDimension);
+
+            for (int j = 0; j < boardDimension; j++) {
+                columnI.push_back(new EngramCandy());
+            }
+
+        gameBoard.push_back(columnI);
     }
-
-
 }
 
 GameBoard::~GameBoard() {
