@@ -222,8 +222,7 @@ void GameBoard::resetBoard() {
         }
     }
 
-    //Copied from constructor
-    //Initialize brand new board, with new EngramCandy instantiations
+    //Initialize brand new board, with new EngramCandy instantiations, spaces already reserved
     for (int i = 0; i < boardDimension; i++) {
         for (int j = 0; j < boardDimension; j++) {
             EngramCandy * engramCandy = new EngramCandy();

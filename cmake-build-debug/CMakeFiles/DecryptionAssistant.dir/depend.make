@@ -19,5 +19,6 @@ CMakeFiles\DecryptionAssistant.dir\ScorePanel.cpp.obj: ..\GameBoard.h
 CMakeFiles\DecryptionAssistant.dir\ScorePanel.cpp.obj: ..\ScorePanel.cpp
 CMakeFiles\DecryptionAssistant.dir\ScorePanel.cpp.obj: ..\ScorePanel.h
 
+CMakeFiles\DecryptionAssistant.dir\main.cpp.obj: ..\EngramCandy.h
 CMakeFiles\DecryptionAssistant.dir\main.cpp.obj: ..\main.cpp
 

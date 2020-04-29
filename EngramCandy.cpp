@@ -8,8 +8,10 @@
 
 //Constructor for generic engram candy
 EngramCandy::EngramCandy() {
-    //Seed a random number generator
-    srand(time(nullptr));
+    //TODO: improve randomization of rarity generator; maybe in main?
+
+    //Seed rand()?
+
     //Init rarity and points based on randomized rarity
     rarity = rand() % 5 + 1;
     pointValue = rarity * 100;
