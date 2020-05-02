@@ -1,7 +1,6 @@
 #include <iostream>
-#include <algorithm>
 #include <ctime>
-#include "EngramCandy.h"
+#include "GameBoard.h"
 
 int main() {
     srand(time(nullptr));
@@ -12,10 +11,18 @@ int main() {
     int * asd = &d;
     std::cout << "The number is: " << *asd << std::endl;
 
-    for (int i = 0; i < 10; i++) {
-        EngramCandy * engramCandy = new EngramCandy();
-        std::cout << engramCandy->getRarity() << std::endl;
+
+    GameBoard * gameBoard = new GameBoard(10);
+
+    for (int i = 0; i < gameBoard->getBoardDimension(); i++) {
+        for (int j = 0; j < gameBoard->getBoardDimension(); j++) {
+            std::cout << gameBoard->getGameBoard()[i][j]->getRarity() << " ";
+        }
+        std::cout << std::endl;
     }
+
+    delete gameBoard;
+    gameBoard = 0;
     //Some startup procedures, initialize GUI (for much later)
     return 0;
 }

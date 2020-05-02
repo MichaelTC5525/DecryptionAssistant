@@ -10,9 +10,8 @@
 void MatchChecker::simulate(bool *matchConfirmed, GameBoard *toCheckIn, int rarity, int x, int y, int direction) {
     int matchLength = 0;
     switch(direction) {
-        //ANY SIMULATED DIRECTION THAT IS TRIGGERED IS GUARANTEED TO EXIST WITHIN BOUNDS OF GAMEBOARD; as checked in
-        // GameBoard::searchBoardForMoves() switch-statement; may or may not need to check for bounds when looking
-        // at match length
+        // GameBoard::searchBoardForMoves() switch-statement ensures that a case is only called if it will result
+        // in a location within the bounds of the board
         case 1: //Left
             matchLength = simMatchesAt(toCheckIn, x - 1, y, rarity);
             break;
@@ -30,16 +29,14 @@ void MatchChecker::simulate(bool *matchConfirmed, GameBoard *toCheckIn, int rari
     *matchConfirmed = (matchLength >= 3);
 }
 
-//Returns the largest 1-dimensional length match sourced from a particular point in the gameBoard given
+//Returns the largest simulated 1-dimensional length match sourced from a particular point in the gameBoard given
 int MatchChecker::simMatchesAt(GameBoard *gb, int xCoord, int yCoord, int rarity) {
     int leftLength = 0;
     if (xCoord != 0) {
-        //leftLength = some recursion;
         leftLength = sim(gb, xCoord - 1, yCoord, rarity, 1);
     }
     int upLength = 0;
     if (yCoord != 0) {
-        //upLength = some recursion
         upLength = sim(gb, xCoord, yCoord - 1, rarity, 2);
     }
     int rightLength = 0;
@@ -80,33 +77,17 @@ int MatchChecker::sim(GameBoard * gameBoard, int x, int y, int rarity, int dir) 
     }
 }
 
-//Moves an EngramCandy at a specified location in a given direction on the board; performs a swap
-//Does not check for a match-3 in the board; may be used to swap entries back
-// Precondition(?): When called, moving in a particular direction does not go outside GameBoard
-void MatchChecker::swap(GameBoard * toMoveIn, int x, int y, int direction) {
+std::vector<std::pair<int, int>> MatchChecker::findMatchSources(GameBoard *gb) {
+    //TODO: modify for actual usage
+    return std::vector<std::pair<int, int>>();
+}
 
-    EngramCandy * swappedCandy;
-    switch(direction) {
-        case 1: //Left
-            swappedCandy = toMoveIn->getGameBoard()[x-1][y];
-            toMoveIn->getGameBoard()[x-1][y] = toMoveIn->getGameBoard()[x][y];
-            toMoveIn->getGameBoard()[x][y] = swappedCandy;
-            break;
-        case 2: //Up
-            swappedCandy = toMoveIn->getGameBoard()[x][y-1];
-            toMoveIn->getGameBoard()[x][y-1] = toMoveIn->getGameBoard()[x][y];
-            toMoveIn->getGameBoard()[x][y] = swappedCandy;
-            break;
-        case 3: //Right
-            swappedCandy = toMoveIn->getGameBoard()[x+1][y];
-            toMoveIn->getGameBoard()[x+1][y] = toMoveIn->getGameBoard()[x][y];
-            toMoveIn->getGameBoard()[x][y] = swappedCandy;
-            break;
-        case 4: //Down
-            swappedCandy = toMoveIn->getGameBoard()[x][y+1];
-            toMoveIn->getGameBoard()[x][y+1] = toMoveIn->getGameBoard()[x][y];
-            toMoveIn->getGameBoard()[x][y] = swappedCandy;
-            break;
-        //no default needed
-    }
+std::vector<int> MatchChecker::findMatchDirs(GameBoard *gb) {
+    //TODO: modify for actual usage
+    return std::vector<int>();
+}
+
+std::vector<int> MatchChecker::findMatchLengths(GameBoard *gb) {
+    //TODO: modify for actual usage
+    return std::vector<int>();
 }
