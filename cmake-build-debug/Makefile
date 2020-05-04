@@ -124,6 +124,33 @@ DecryptionAssistant\fast:
 	$(MAKE) -f CMakeFiles\DecryptionAssistant.dir\build.make /nologo -$(MAKEFLAGS) CMakeFiles\DecryptionAssistant.dir\build
 .PHONY : DecryptionAssistant\fast
 
+DAGame.obj: DAGame.cpp.obj
+
+.PHONY : DAGame.obj
+
+# target to build an object file
+DAGame.cpp.obj:
+	$(MAKE) -f CMakeFiles\DecryptionAssistant.dir\build.make /nologo -$(MAKEFLAGS) CMakeFiles\DecryptionAssistant.dir\DAGame.cpp.obj
+.PHONY : DAGame.cpp.obj
+
+DAGame.i: DAGame.cpp.i
+
+.PHONY : DAGame.i
+
+# target to preprocess a source file
+DAGame.cpp.i:
+	$(MAKE) -f CMakeFiles\DecryptionAssistant.dir\build.make /nologo -$(MAKEFLAGS) CMakeFiles\DecryptionAssistant.dir\DAGame.cpp.i
+.PHONY : DAGame.cpp.i
+
+DAGame.s: DAGame.cpp.s
+
+.PHONY : DAGame.s
+
+# target to generate assembly for a file
+DAGame.cpp.s:
+	$(MAKE) -f CMakeFiles\DecryptionAssistant.dir\build.make /nologo -$(MAKEFLAGS) CMakeFiles\DecryptionAssistant.dir\DAGame.cpp.s
+.PHONY : DAGame.cpp.s
+
 EngramCandy.obj: EngramCandy.cpp.obj
 
 .PHONY : EngramCandy.obj
@@ -268,6 +295,9 @@ help:
 	@echo ... DecryptionAssistant
 	@echo ... edit_cache
 	@echo ... rebuild_cache
+	@echo ... DAGame.obj
+	@echo ... DAGame.i
+	@echo ... DAGame.s
 	@echo ... EngramCandy.obj
 	@echo ... EngramCandy.i
 	@echo ... EngramCandy.s

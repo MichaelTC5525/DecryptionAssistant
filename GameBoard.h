@@ -30,6 +30,7 @@ public:
     std::vector<std::vector<EngramCandy *>> getGameBoard();
 
     //Scans current board state for present matches, and removes them; drops down candies above removed ones
+    //For use on board that are reset or newly created boards
     void checkForMatches();
 
     //Swaps positions of 2 elements: one specified at x-y and the other directly next to it in a direction

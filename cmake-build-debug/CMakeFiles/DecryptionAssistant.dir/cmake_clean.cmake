@@ -1,4 +1,5 @@
 file(REMOVE_RECURSE
+  "CMakeFiles/DecryptionAssistant.dir/DAGame.cpp.obj"
   "CMakeFiles/DecryptionAssistant.dir/EngramCandy.cpp.obj"
   "CMakeFiles/DecryptionAssistant.dir/GameBoard.cpp.obj"
   "CMakeFiles/DecryptionAssistant.dir/MatchChecker.cpp.obj"

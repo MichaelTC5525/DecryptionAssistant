@@ -84,6 +84,12 @@
 				</MakeCommands>
 			</Target>
 		</Build>
+		<Unit filename="C:/Users/micha/CLionProjects/DecryptionAssistant/DAGame.cpp">
+			<Option target="DecryptionAssistant"/>
+		</Unit>
+		<Unit filename="C:/Users/micha/CLionProjects/DecryptionAssistant/DAGame.h">
+			<Option target="DecryptionAssistant"/>
+		</Unit>
 		<Unit filename="C:/Users/micha/CLionProjects/DecryptionAssistant/EngramCandy.cpp">
 			<Option target="DecryptionAssistant"/>
 		</Unit>

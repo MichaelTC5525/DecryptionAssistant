@@ -230,6 +230,7 @@ void GameBoard::checkForMatches() {
     matchDirs = MatchChecker::findMatchDirs(this);
     matchLengths = MatchChecker::findMatchLengths(this);
 
+    //Iterative condition is within bounds for all 3 vectors; assume same size
     for (int i = 0; i < matchSources.size(); i++) {
         switch(matchDirs[i]) {
             //Left

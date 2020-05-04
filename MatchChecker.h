@@ -16,10 +16,10 @@ public:
     //When simulating or moving items in a direction: Left = 1, Up = 2, Right = 3, Down = 4;
     static void simulate(bool * matchConfirmed, GameBoard * toCheckIn, int rarity, int x, int y, int direction);
 
+    //These 3 functions are very similar (performs the same algorithm through the board), however they return
+    // different types and their vector contents represent different things; to do: algorithm in one func?
     static std::vector<std::pair<int, int>> findMatchSources(GameBoard * gb);
-
     static std::vector<int> findMatchDirs(GameBoard * gb);
-
     static std::vector<int> findMatchLengths(GameBoard * gb);
 
 private:

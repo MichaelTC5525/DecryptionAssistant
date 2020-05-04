@@ -32,19 +32,19 @@ void MatchChecker::simulate(bool *matchConfirmed, GameBoard *toCheckIn, int rari
 //Returns the largest simulated 1-dimensional length match sourced from a particular point in the gameBoard given
 int MatchChecker::simMatchesAt(GameBoard *gb, int xCoord, int yCoord, int rarity) {
     int leftLength = 0;
-    if (xCoord != 0) {
+    if (xCoord > 0) {
         leftLength = sim(gb, xCoord - 1, yCoord, rarity, 1);
     }
     int upLength = 0;
-    if (yCoord != 0) {
+    if (yCoord > 0) {
         upLength = sim(gb, xCoord, yCoord - 1, rarity, 2);
     }
     int rightLength = 0;
-    if (xCoord != gb->getBoardDimension() - 1) {
+    if (xCoord < gb->getBoardDimension() - 1) {
         rightLength = sim(gb, xCoord + 1, yCoord, rarity, 3);
     }
     int downLength = 0;
-    if (yCoord != gb->getBoardDimension() - 1) {
+    if (yCoord < gb->getBoardDimension() - 1) {
         downLength = sim(gb, xCoord, yCoord + 1, rarity, 4);
     }
     return 1 + std::max(leftLength + rightLength, upLength + downLength);
@@ -77,17 +77,111 @@ int MatchChecker::sim(GameBoard * gameBoard, int x, int y, int rarity, int dir) 
     }
 }
 
+
 std::vector<std::pair<int, int>> MatchChecker::findMatchSources(GameBoard *gb) {
-    //TODO: modify for actual usage
-    return std::vector<std::pair<int, int>>();
+    std::vector<std::pair<int, int>> retVal = std::vector<std::pair<int, int>>();
+    for (int i = 0; i < gb->getBoardDimension(); i++) {
+        for (int j = 0; j < gb->getBoardDimension(); j++) {
+
+            //Lengths extending outside of a source point (i, j);
+            int rarityToCheck = gb->getGameBoard()[i][j]->getRarity(); //rarity at this point
+            int leftLen = 0;
+            int upLen = 0;
+            int rightLen = 0;
+            int downLen = 0;
+            leftLen = sim(gb, i - 1, j, rarityToCheck, 1);
+            upLen = sim(gb, i, j - 1, rarityToCheck, 2);
+            rightLen = sim(gb, i + 1, j, rarityToCheck, 3);
+            downLen = sim(gb, i, j + 1, rarityToCheck, 4);
+
+            // This set of emplacements likely will cause overlapping matches at different source points in the board
+            // However, when these elements are deleted in GameBoard::removeCandy(), pointers are set to 0 and so
+            //  multiple deletions should not be harmful
+            if (1 + leftLen >= 3) {
+                retVal.emplace_back(std::make_pair(i, j));
+            }
+            if (1 + upLen >= 3) {
+                retVal.emplace_back(std::make_pair(i, j));
+            }
+            if (1 + rightLen >= 3) {
+                retVal.emplace_back(std::make_pair(i, j));
+            }
+            if (1 + downLen >= 3) {
+                retVal.emplace_back(std::make_pair(i, j));
+            }
+        }
+    }
+    return retVal;
 }
 
 std::vector<int> MatchChecker::findMatchDirs(GameBoard *gb) {
-    //TODO: modify for actual usage
-    return std::vector<int>();
+    std::vector<int> retVal = std::vector<int>();
+    for (int i = 0; i < gb->getBoardDimension(); i++) {
+        for (int j = 0; j < gb->getBoardDimension(); j++) {
+
+            //Lengths extending outside of a source point (i, j);
+            int rarityToCheck = gb->getGameBoard()[i][j]->getRarity(); //rarity at this point
+            int leftLen = 0;
+            int upLen = 0;
+            int rightLen = 0;
+            int downLen = 0;
+            leftLen = sim(gb, i - 1, j, rarityToCheck, 1);
+            upLen = sim(gb, i, j - 1, rarityToCheck, 2);
+            rightLen = sim(gb, i + 1, j, rarityToCheck, 3);
+            downLen = sim(gb, i, j + 1, rarityToCheck, 4);
+
+            // This set of emplacements likely will cause overlapping matches at different source points in the board
+            // However, when these elements are deleted in GameBoard::removeCandy(), pointers are set to 0 and so
+            //  multiple deletions should not be harmful
+            if (1 + leftLen >= 3) {
+                retVal.emplace_back(1);
+            }
+            if (1 + upLen >= 3) {
+                retVal.emplace_back(2);
+            }
+            if (1 + rightLen >= 3) {
+                retVal.emplace_back(3);
+            }
+            if (1 + downLen >= 3) {
+                retVal.emplace_back(4);
+            }
+        }
+    }
+    return retVal;
 }
 
 std::vector<int> MatchChecker::findMatchLengths(GameBoard *gb) {
-    //TODO: modify for actual usage
-    return std::vector<int>();
+    std::vector<int> retVal = std::vector<int>();
+    for (int i = 0; i < gb->getBoardDimension(); i++) {
+        for (int j = 0; j < gb->getBoardDimension(); j++) {
+
+            //Lengths extending outside of a source point (i, j);
+            int rarityToCheck = gb->getGameBoard()[i][j]->getRarity(); //rarity at this point
+            int leftLen = 0;
+            int upLen = 0;
+            int rightLen = 0;
+            int downLen = 0;
+            leftLen = sim(gb, i - 1, j, rarityToCheck, 1);
+            upLen = sim(gb, i, j - 1, rarityToCheck, 2);
+            rightLen = sim(gb, i + 1, j, rarityToCheck, 3);
+            downLen = sim(gb, i, j + 1, rarityToCheck, 4);
+
+            // This set of emplacements likely will cause overlapping matches at different source points in the board
+            // However, when these elements are deleted in GameBoard::removeCandy(), pointers are set to 0 and so
+            //  multiple deletions should not be harmful
+            if (1 + leftLen >= 3) {
+                retVal.emplace_back(1 + leftLen);
+            }
+            if (1 + upLen >= 3) {
+                retVal.emplace_back(1 + upLen);
+            }
+            if (1 + rightLen >= 3) {
+                retVal.emplace_back(1 + rightLen);
+            }
+            if (1 + downLen >= 3) {
+                retVal.emplace_back(1 + downLen);
+            }
+        }
+    }
+    return retVal;
 }
