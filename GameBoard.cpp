@@ -350,12 +350,12 @@ void GameBoard::updateBoardByDrop() {
 
         for (int nullLoc : nullPlaces) {
             //Move everything above the null space down by one spot
-            for (int k = 0; k < nullLoc; k--) {
+            for (int k = nullLoc - 1; k >= 0; k--) {
                 gameBoard[i][k+1] = gameBoard[i][k];
             }
         }
 
-        //FIll in the now opened spaces at the top of the column
+        //Fill in the now opened spaces at the top of the column
         for (int m = 0; m < numberOfNulls; m++) {
             gameBoard[i][m] = new EngramCandy();
         }
