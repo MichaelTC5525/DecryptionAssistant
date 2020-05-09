@@ -210,6 +210,28 @@ bool GameBoard::searchBoardForMoves() {
     return false;
 }
 
+void GameBoard::resetBoard() {
+    //Set up a new gameBoard; maybe delete all current elements, and rerandomize to repopulate?
+    //Kind of a mixture of both the destructor and constructor of GameBoard objects
+
+    //Copied from destructor; get rid of everything currently in it
+    for (int i = 0; i < boardDimension; i++) {
+        for (int j = 0; j < boardDimension; j++) {
+            removeCandy(i, j);
+        }
+    }
+
+    //Initialize brand new board, with new EngramCandy instantiations, spaces already reserved
+    for (int i = 0; i < boardDimension; i++) {
+        for (int j = 0; j < boardDimension; j++) {
+            EngramCandy * engramCandy = new EngramCandy();
+            engramCandy->setXPos(i);
+            engramCandy->setYPos(j);
+            gameBoard[i][j] = engramCandy;
+        }
+    }
+}
+
 //Looks for any matches within the board, keeping track of all current matches within associative arrays(?) and then
 //performing mass removals to get rid of the current matches
 void GameBoard::checkForMatches() {
@@ -231,6 +253,7 @@ void GameBoard::checkForMatches() {
     matchLengths = MatchChecker::findMatchLengths(this);
 
     //Iterative condition is within bounds for all 3 vectors; assume same size
+    //Removes candies that form a match, but excludes the starting point of those matches
     for (int i = 0; i < matchSources.size(); i++) {
         switch(matchDirs[i]) {
             //Left
@@ -259,29 +282,14 @@ void GameBoard::checkForMatches() {
                 break;
         }
     }
-}
 
-void GameBoard::resetBoard() {
-    //Set up a new gameBoard; maybe delete all current elements, and rerandomize to repopulate?
-    //Kind of a mixture of both the destructor and constructor of GameBoard objects
-
-    //Copied from destructor; get rid of everything currently in it
-    for (int i = 0; i < boardDimension; i++) {
-        for (int j = 0; j < boardDimension; j++) {
-           removeCandy(i, j);
-        }
-    }
-
-    //Initialize brand new board, with new EngramCandy instantiations, spaces already reserved
-    for (int i = 0; i < boardDimension; i++) {
-        for (int j = 0; j < boardDimension; j++) {
-            EngramCandy * engramCandy = new EngramCandy();
-            engramCandy->setXPos(i);
-            engramCandy->setYPos(j);
-            gameBoard[i][j] = engramCandy;
-        }
+    //Clean up the sources of the matches that were left behind
+    for (int k = 0; k < matchSources.size(); k++) {
+        removeCandy(matchSources[k].first, matchSources[k].second);
     }
 }
+
+
 
 //Moves an EngramCandy at a specified location in a given direction on the board; performs a swap
 //Does not check for a match-3 in the board; may be used to swap entries back
@@ -314,19 +322,63 @@ void GameBoard::swap(int x, int y, int direction) {
     }
 }
 
+//IDEA: Iterate over columns of the board, and count the number of NULL pointers in each column, and keep track
+// of what y-positions in that column are NULL; iterate through each of the NULL locations, and shift everything
+// above that spot down by a single space; this will also ensure fill-in of intermediate null locations in column
+// Every element above the lowest NULL pointer drops down "number of NULL pointers under this element" places,
+// and fill the top "number of NULL pointers" spaces with new EngramCandy()
+void GameBoard::updateBoardByDrop() {
+
+
+    //Iterate over board columns
+    for (int i = 0; i < gameBoard.size(); i++) {
+
+        //Number of null spaces in this column
+        int numberOfNulls = 0;
+
+        //Locations of null spaces (y-pos)
+        std::vector<int> nullPlaces = std::vector<int>();
+        for (int j = 0; j < gameBoard[i].size(); j++) {
+
+            //If a space is empty (EngramCandy * = nullptr)
+            if (gameBoard[i][j] == nullptr) {
+                //Increment number of null spaces, and make note of location
+                numberOfNulls++;
+                nullPlaces.push_back(j);
+            }
+        }
+
+        for (int nullLoc : nullPlaces) {
+            //Move everything above the null space down by one spot
+            for (int k = 0; k < nullLoc; k--) {
+                gameBoard[i][k+1] = gameBoard[i][k];
+            }
+        }
+
+        //FIll in the now opened spaces at the top of the column
+        for (int m = 0; m < numberOfNulls; m++) {
+            gameBoard[i][m] = new EngramCandy();
+        }
+
+    }
+
+}
+
 //Deletes an EngramCandy at specified coordinates in the GameBoard
 void GameBoard::removeCandy(int x, int y) {
     //Deallocate the value of the EngramCandy that was pointed to
     delete gameBoard[x][y];
-    //If this gets deleted a second time, it should be set to a null value to prevent double delete bugs
-    //Can be reset on a subsequent new EngramCandy()
+    //In case this gets deleted a second time, it should be set to a null value to prevent double delete bugs
+    //Can be reset back to a valid piece of data on a subsequent new EngramCandy()
     gameBoard[x][y] = 0;
 }
 
+//Returns the dimension of the board (square-shaped)
 int GameBoard::getBoardDimension() {
     return boardDimension;
 }
 
+//Returns the gameBoard itself as a 2-D vector
 std::vector<std::vector<EngramCandy *>> GameBoard::getGameBoard() {
     return gameBoard;
 }

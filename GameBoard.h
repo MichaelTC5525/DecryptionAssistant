@@ -20,6 +20,16 @@ public:
     //Scans the current board state for possible moves that would result in matches
     void checkForMoves();
 
+    //Scans current board state for present matches, and removes them; drops down candies above removed ones
+    //For use on board that are reset or newly created boards
+    void checkForMatches();
+
+    //Swaps positions of 2 elements: one specified at x-y and the other directly next to it in a direction
+    void swap(int x, int y, int direction);
+
+    //Drops elements down where space is present in the board; likely after a match cleared those elements
+    void updateBoardByDrop();
+
     //Deletes the candy at the specified coordinates in the gameBoard;
     void removeCandy(int x, int y);
 
@@ -28,13 +38,6 @@ public:
 
     //Returns the gameBoard 2-D vector
     std::vector<std::vector<EngramCandy *>> getGameBoard();
-
-    //Scans current board state for present matches, and removes them; drops down candies above removed ones
-    //For use on board that are reset or newly created boards
-    void checkForMatches();
-
-    //Swaps positions of 2 elements: one specified at x-y and the other directly next to it in a direction
-    void swap(int x, int y, int direction);
 
 private:
     //Helper function for public checkForMoves()

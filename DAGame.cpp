@@ -4,9 +4,9 @@
 
 #include "DAGame.h"
 
-DAGame::DAGame() {
-    gameBoard = new GameBoard(10);
-    scorePanel = new ScorePanel(10000, 30);
+DAGame::DAGame(int gameDim, int scoreToBeat, int movesToStart) {
+    gameBoard = new GameBoard(gameDim);
+    scorePanel = new ScorePanel(scoreToBeat, movesToStart);
 }
 
 DAGame::~DAGame() {
@@ -14,10 +14,12 @@ DAGame::~DAGame() {
     delete scorePanel;
 }
 
+//May parameterize
 void DAGame::performMove() {
 
 }
 
+//May parameterize
 void DAGame::updateScore() {
 
 }
