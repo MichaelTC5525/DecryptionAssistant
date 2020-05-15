@@ -4,8 +4,8 @@
 
 #include "DAGame.h"
 
-DAGame::DAGame(int gameDim, int scoreToBeat, int movesToStart) {
-    gameBoard = new GameBoard(gameDim);
+DAGame::DAGame(int gameDimX, int gameDimY, int scoreToBeat, int movesToStart) {
+    gameBoard = new GameBoard(gameDimX, gameDimY);
     scorePanel = new ScorePanel(scoreToBeat, movesToStart);
 }
 

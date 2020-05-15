@@ -12,7 +12,7 @@ class GameBoard {
 
 public:
     //Standard parameterized constructor
-    GameBoard(int dimension);
+    GameBoard(int dimensionX, int dimensionY);
 
     //Destructor
     ~GameBoard();
@@ -34,7 +34,10 @@ public:
     void removeCandy(int x, int y);
 
     //Returns size of square board
-    int getBoardDimension();
+    int getBoardDimensionX();
+
+    //Returns size of y-dimension of the board
+    int getBoardDimensionY();
 
     //Returns the gameBoard 2-D vector
     std::vector<std::vector<EngramCandy *>> getGameBoard();
@@ -49,8 +52,10 @@ private:
     //Representation of the gameBoard as a 2-Dimensional vector array
     std::vector<std::vector<EngramCandy *>> gameBoard;
 
-    //X and Y Dimensions of the GameBoard
-    int boardDimension;
+    //X dimension of the GameBoard
+    int boardDimensionX;
+
+    int boardDimensionY;
 
 };
 

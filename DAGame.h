@@ -11,7 +11,7 @@
 
 class DAGame {
 public:
-    DAGame(int gameDim, int scoreToBeat, int movesToStart);
+    DAGame(int gameDimX, int gameDimY, int scoreToBeat, int movesToStart);
     ~DAGame();
 
     void performMove();

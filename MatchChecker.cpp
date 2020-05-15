@@ -40,11 +40,11 @@ int MatchChecker::simMatchesAt(GameBoard *gb, int xCoord, int yCoord, int rarity
         upLength = sim(gb, xCoord, yCoord - 1, rarity, 2);
     }
     int rightLength = 0;
-    if (xCoord < gb->getBoardDimension() - 1) {
+    if (xCoord < gb->getBoardDimensionX() - 1) {
         rightLength = sim(gb, xCoord + 1, yCoord, rarity, 3);
     }
     int downLength = 0;
-    if (yCoord < gb->getBoardDimension() - 1) {
+    if (yCoord < gb->getBoardDimensionY() - 1) {
         downLength = sim(gb, xCoord, yCoord + 1, rarity, 4);
     }
     return 1 + std::max(leftLength + rightLength, upLength + downLength);
@@ -54,8 +54,8 @@ int MatchChecker::sim(GameBoard * gameBoard, int x, int y, int rarity, int dir) 
     //Check first for if the rarity matches
     if (gameBoard->getGameBoard()[x][y]->getRarity() == rarity) {
         //Check for edge cases; if we want to continue in a direction but are at a boundary of the board
-        if ((x == 0 && dir == 1) || (x == gameBoard->getBoardDimension() - 1 && dir == 3) || (y == 0 && dir == 2) ||
-            (y == gameBoard->getBoardDimension() - 1 && dir == 4)) {
+        if ((x == 0 && dir == 1) || (x == gameBoard->getBoardDimensionX() - 1 && dir == 3) || (y == 0 && dir == 2) ||
+            (y == gameBoard->getBoardDimensionY() - 1 && dir == 4)) {
             return 1;
         } else {
             //Determine which direction to continue in
@@ -80,8 +80,8 @@ int MatchChecker::sim(GameBoard * gameBoard, int x, int y, int rarity, int dir) 
 
 std::vector<std::pair<int, int>> MatchChecker::findMatchSources(GameBoard *gb) {
     std::vector<std::pair<int, int>> retVal = std::vector<std::pair<int, int>>();
-    for (int i = 0; i < gb->getBoardDimension(); i++) {
-        for (int j = 0; j < gb->getBoardDimension(); j++) {
+    for (int i = 0; i < gb->getBoardDimensionX(); i++) {
+        for (int j = 0; j < gb->getBoardDimensionY(); j++) {
 
             //Lengths extending outside of a source point (i, j);
             int rarityToCheck = gb->getGameBoard()[i][j]->getRarity(); //rarity at this point
@@ -116,8 +116,8 @@ std::vector<std::pair<int, int>> MatchChecker::findMatchSources(GameBoard *gb) {
 
 std::vector<int> MatchChecker::findMatchDirs(GameBoard *gb) {
     std::vector<int> retVal = std::vector<int>();
-    for (int i = 0; i < gb->getBoardDimension(); i++) {
-        for (int j = 0; j < gb->getBoardDimension(); j++) {
+    for (int i = 0; i < gb->getBoardDimensionX(); i++) {
+        for (int j = 0; j < gb->getBoardDimensionY(); j++) {
 
             //Lengths extending outside of a source point (i, j);
             int rarityToCheck = gb->getGameBoard()[i][j]->getRarity(); //rarity at this point
@@ -152,8 +152,8 @@ std::vector<int> MatchChecker::findMatchDirs(GameBoard *gb) {
 
 std::vector<int> MatchChecker::findMatchLengths(GameBoard *gb) {
     std::vector<int> retVal = std::vector<int>();
-    for (int i = 0; i < gb->getBoardDimension(); i++) {
-        for (int j = 0; j < gb->getBoardDimension(); j++) {
+    for (int i = 0; i < gb->getBoardDimensionX(); i++) {
+        for (int j = 0; j < gb->getBoardDimensionY(); j++) {
 
             //Lengths extending outside of a source point (i, j);
             int rarityToCheck = gb->getGameBoard()[i][j]->getRarity(); //rarity at this point

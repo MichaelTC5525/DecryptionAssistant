@@ -5,19 +5,20 @@
 #include "GameBoard.h"
 #include "MatchChecker.h"
 
-GameBoard::GameBoard(int dimension) {
-    //Set dimensions of the board (square board)
-    boardDimension = dimension;
+GameBoard::GameBoard(int dimensionX, int dimensionY) {
+    //Set dimensions of the board
+    boardDimensionX = dimensionX;
+    boardDimensionY = dimensionY;
 
     //create the 2-Dimensional array; make them pointers to their objects for ease of clearing later
     gameBoard = std::vector<std::vector<EngramCandy *>>();
-    gameBoard.reserve(boardDimension);
+    gameBoard.reserve(boardDimensionX);
 
-    for (int i = 0; i < boardDimension; i++) {
+    for (int i = 0; i < boardDimensionX; i++) {
         std::vector<EngramCandy *> columnI;
-        columnI.reserve(boardDimension);
+        columnI.reserve(boardDimensionY);
 
-        for (int j = 0; j < boardDimension; j++) {
+        for (int j = 0; j < boardDimensionY; j++) {
             columnI.push_back(new EngramCandy());
         }
 
@@ -27,8 +28,8 @@ GameBoard::GameBoard(int dimension) {
 
 GameBoard::~GameBoard() {
     //loop through each of the cells, and free up the space of each EngramCandy?
-    for (int i = 0; i < boardDimension; i++) {
-        for (int j = 0; j < boardDimension; j++) {
+    for (int i = 0; i < boardDimensionX; i++) {
+        for (int j = 0; j < boardDimensionY; j++) {
             removeCandy(i, j);
         }
     }
@@ -104,15 +105,15 @@ void GameBoard::resetBoard() {
     //Kind of a mixture of both the destructor and constructor of GameBoard objects
 
     //Copied from destructor; get rid of everything currently in it
-    for (int i = 0; i < boardDimension; i++) {
-        for (int j = 0; j < boardDimension; j++) {
+    for (int i = 0; i < boardDimensionX; i++) {
+        for (int j = 0; j < boardDimensionY; j++) {
             removeCandy(i, j);
         }
     }
 
     //Initialize brand new board, with new EngramCandy instantiations, spaces already reserved
-    for (int i = 0; i < boardDimension; i++) {
-        for (int j = 0; j < boardDimension; j++) {
+    for (int i = 0; i < boardDimensionX; i++) {
+        for (int j = 0; j < boardDimensionY; j++) {
             EngramCandy * engramCandy = new EngramCandy();
             engramCandy->setXPos(i);
             engramCandy->setYPos(j);
@@ -262,9 +263,14 @@ void GameBoard::removeCandy(int x, int y) {
     gameBoard[x][y] = 0;
 }
 
-//Returns the dimension of the board (square-shaped)
-int GameBoard::getBoardDimension() {
-    return boardDimension;
+//Returns the x-dimension of the board
+int GameBoard::getBoardDimensionX() {
+    return boardDimensionX;
+}
+
+//Returns the y-dimension of the board
+int GameBoard::getBoardDimensionY() {
+    return boardDimensionY;
 }
 
 //Returns the gameBoard itself as a 2-D vector

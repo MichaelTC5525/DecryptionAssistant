@@ -12,10 +12,10 @@ int main() {
     std::cout << "The number is: " << *asd << std::endl;
 
 
-    GameBoard * gameBoard = new GameBoard(10);
+    GameBoard * gameBoard = new GameBoard(10, 10);
 
-    for (int i = 0; i < gameBoard->getBoardDimension(); i++) {
-        for (int j = 0; j < gameBoard->getBoardDimension(); j++) {
+    for (int i = 0; i < gameBoard->getBoardDimensionX(); i++) {
+        for (int j = 0; j < gameBoard->getBoardDimensionY(); j++) {
             std::cout << gameBoard->getGameBoard()[i][j]->getRarity() << " ";
         }
         std::cout << std::endl;
