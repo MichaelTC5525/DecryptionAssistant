@@ -67,144 +67,33 @@ bool GameBoard::searchBoardForMoves() {
             //Get the rarity of the current Candy at this position
             int rarityToTest = gameBoard[i][j]->getRarity();
 
-            switch(i) {
-                case 0:
-                    switch(j) {
-                        case 0:
-                            //Right, Down
-                            MatchChecker::simulate(matchFoundPointer, this, rarityToTest, i, j, 3);
-                            if (matchFound) {
-                                return true;
-                            }
-                            MatchChecker::simulate(matchFoundPointer, this, rarityToTest, i, j, 4);
-                            if (matchFound) {
-                                return true;
-                            }
-                            break;
-                        case 9:
-                            //Up, Right
-                            MatchChecker::simulate(matchFoundPointer, this, rarityToTest, i, j, 2);
-                            if (matchFound) {
-                                return true;
-                            }
-                            MatchChecker::simulate(matchFoundPointer, this, rarityToTest, i, j, 3);
-                            if (matchFound) {
-                                return true;
-                            }
-                            break;
-                        default:
-                            //Up, Right, Down
-                            MatchChecker::simulate(matchFoundPointer, this, rarityToTest, i, j, 2);
-                            if (matchFound) {
-                                return true;
-                            }
-                            MatchChecker::simulate(matchFoundPointer, this, rarityToTest, i, j, 3);
-                            if (matchFound) {
-                                return true;
-                            }
-                            MatchChecker::simulate(matchFoundPointer, this, rarityToTest, i, j, 4);
-                            if (matchFound) {
-                                return true;
-                            }
-                            break;
-                    }
-                    break;
-                case 9:
-                    switch(j) {
-                        case 0:
-                            //Left, Down
-                            MatchChecker::simulate(matchFoundPointer, this, rarityToTest, i, j, 1);
-                            if (matchFound) {
-                                return true;
-                            }
-                            MatchChecker::simulate(matchFoundPointer, this, rarityToTest, i, j, 4);
-                            if (matchFound) {
-                                return true;
-                            }
-                            break;
-                        case 9:
-                            //Left, Up
-                            MatchChecker::simulate(matchFoundPointer, this, rarityToTest, i, j, 1);
-                            if (matchFound) {
-                                return true;
-                            }
-                            MatchChecker::simulate(matchFoundPointer, this, rarityToTest, i, j, 2);
-                            if (matchFound) {
-                                return true;
-                            }
-                            break;
-                        default:
-                            //Left, Up, Down
-                            MatchChecker::simulate(matchFoundPointer, this, rarityToTest, i, j, 1);
-                            if (matchFound) {
-                                return true;
-                            }
-                            MatchChecker::simulate(matchFoundPointer, this, rarityToTest, i, j, 2);
-                            if (matchFound) {
-                                return true;
-                            }
-                            MatchChecker::simulate(matchFoundPointer, this, rarityToTest, i, j, 4);
-                            if (matchFound) {
-                                return true;
-                            }
-                            break;
-                    }
-                    break;
-                default:
-                    switch(j) {
-                        case 0:
-                            //Left, Right, Down
-                            MatchChecker::simulate(matchFoundPointer, this, rarityToTest, i, j, 1);
-                            if (matchFound) {
-                                return true;
-                            }
-                            MatchChecker::simulate(matchFoundPointer, this, rarityToTest, i, j, 3);
-                            if (matchFound) {
-                                return true;
-                            }
-                            MatchChecker::simulate(matchFoundPointer, this, rarityToTest, i, j, 4);
-                            if (matchFound) {
-                                return true;
-                            }
-                            break;
-                        case 9:
-                            //Left, Up, Right
-                            MatchChecker::simulate(matchFoundPointer, this, rarityToTest, i, j, 1);
-                            if (matchFound) {
-                                return true;
-                            }
-                            MatchChecker::simulate(matchFoundPointer, this, rarityToTest, i, j, 2);
-                            if (matchFound) {
-                                return true;
-                            }
-                            MatchChecker::simulate(matchFoundPointer, this, rarityToTest, i, j, 3);
-                            if (matchFound) {
-                                return true;
-                            }
-                            break;
-                        default:
-                            //Left, Up, Right, Down
-                            MatchChecker::simulate(matchFoundPointer, this, rarityToTest, i, j, 1);
-                            if (matchFound) {
-                                return true;
-                            }
-                            MatchChecker::simulate(matchFoundPointer, this, rarityToTest, i, j, 2);
-                            if (matchFound) {
-                                return true;
-                            }
-                            MatchChecker::simulate(matchFoundPointer, this, rarityToTest, i, j, 3);
-                            if (matchFound) {
-                                return true;
-                            }
-                            MatchChecker::simulate(matchFoundPointer, this, rarityToTest, i, j, 4);
-                            if (matchFound) {
-                                return true;
-                            }
-                            break;
-                    }
-                    break;
+            if (i != 0) {
+                MatchChecker::simulate(matchFoundPointer, this, rarityToTest, i, j, 1);
+                if (matchFound) {
+                    return true;
+                }
             }
 
+            if (j != 0) {
+                MatchChecker::simulate(matchFoundPointer, this, rarityToTest, i, j, 2);
+                if (matchFound) {
+                    return true;
+                }
+            }
+
+            if (i != gameBoard.size() - 1) {
+                MatchChecker::simulate(matchFoundPointer, this, rarityToTest, i, j, 3);
+                if (matchFound) {
+                    return true;
+                }
+            }
+
+            if (j != gameBoard[i].size() - 1) {
+                MatchChecker::simulate(matchFoundPointer, this, rarityToTest, i, j, 4);
+                if (matchFound) {
+                    return true;
+                }
+            }
         }
     }
     return false;
